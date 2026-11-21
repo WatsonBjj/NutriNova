@@ -1,0 +1,26 @@
+NUTRITRACK — versión móvil minimalista + escáner IA
+
+DISEÑO
+- Interfaz móvil oscura y minimalista inspirada en la referencia.
+- Icono propio (manzana azul con hoja verde).
+- Navegación inferior: Inicio, Escanear, Añadir, Historial y Perfil.
+- Registro diario local de alimentos y agua.
+- Escáner con cámara/galería, análisis IA, revisión y botón para sumar al registro.
+
+PARA PUBLICAR E INSTALAR EN ANDROID
+1. Sube esta carpeta completa a un proyecto de Vercel.
+2. En la configuración del proyecto, añade OPENAI_API_KEY como variable de entorno. La clave debe guardarla el propietario adulto del proyecto en el servidor; nunca la escribas en index.html ni la compartas.
+3. Opcionalmente configura OPENAI_MODEL con un modelo de visión disponible en tu cuenta. El valor predeterminado del ejemplo es gpt-6.2-astra; cámbialo si tu cuenta no tiene acceso a ese modelo.
+4. Despliega el proyecto. La web y la función /api/analyze-food deben quedar publicadas en el mismo dominio HTTPS.
+5. Abre la URL HTTPS en Chrome en Android > menú ⋮ > Instalar aplicación / Añadir a pantalla de inicio.
+
+IMPORTANTE SOBRE EL ESCÁNER
+- El frontend y el backend ya están conectados por la ruta /api/analyze-food.
+- Para analizar de verdad, hace falta publicar el backend y configurar una clave de API válida en el servidor. Sin esa configuración, la pantalla y la cámara funcionan, pero el análisis IA responderá que falta configuración.
+- Las estimaciones visuales no miden el peso exacto ni detectan con certeza aceites, ingredientes ocultos o preparación. Revisa los resultados.
+- El escáner envía la foto al servicio de IA para procesarla. No se guarda la foto en la lista de comidas; los totales y alimentos se guardan localmente en el navegador.
+- La interfaz se puede abrir sin conexión después de cargarla una vez, pero el escáner IA requiere Internet.
+
+FUENTES TÉCNICAS
+La función usa la API Responses de OpenAI con entrada de imagen (image_url como data URL). Consulta la guía oficial de imágenes y visión antes de desplegar y confirma el modelo disponible en tu cuenta:
+https://developers.openai.com/api/docs/guides/images-vision
